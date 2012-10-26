@@ -1,1 +1,4 @@
-README for rails_tut_sample_app
+README for Rails Tutorial Sample Application
+=============================================
+
+
