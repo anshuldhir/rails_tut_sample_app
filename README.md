@@ -1,0 +1,1 @@
+README for rails_tut_sample_app

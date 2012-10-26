@@ -1,0 +1,17 @@
+global: &global
+  adapter: postgresql
+  encoding: unicode
+  min_messages: warning
+  password:
+  pool: 5
+  username: username
+
+development:
+  database: rails_tut_sample_app_development
+  <<: *global
+
+test:
+  database: rails_tut_sample_app_test
+  <<: *global
+
+

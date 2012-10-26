@@ -1,0 +1,2 @@
+rvm use --create ruby-1.9.3-p286@rails3tutorial2ndEd
+export HEROKU_APP=rails_tut_sample_app-staging
