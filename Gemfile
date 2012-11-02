@@ -39,7 +39,6 @@ gem 'jquery-rails'
 
 gem "thin"
 gem "decent_exposure"
-gem "haml-rails"
 group :development do
   gem "rails-erd"
 end
