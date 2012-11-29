@@ -1,5 +1,6 @@
 RailsTutSampleApp::Application.routes.draw do
-  get "users/new"  # keeping it here for now, to keep the users/new route working.
+
+  resources :users
 
   root to: 'static_pages#home'
   match '/help', to: 'static_pages#help'

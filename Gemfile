@@ -58,10 +58,11 @@ group :development, :test do
   gem "rspec-rails"
 end
 
-#group :test do
+group :test do
+  gem 'factory_girl_rails', '4.1.0'
   #gem "cucumber-rails", :require => false
   #gem "database_cleaner"
   #gem "rspec-rails"
-#end
+end
 
 ruby '1.9.3'
