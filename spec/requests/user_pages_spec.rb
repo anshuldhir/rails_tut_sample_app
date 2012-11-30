@@ -9,7 +9,7 @@ describe "User pages" do
     let(:page_title) { 'Sign up' }
     let(:submit) { "Create my account"}
 
-    it { should have_selector('h1', text: 'Sign up') }
+    it { should have_selector('h1', text: page_title) }
     it { should have_selector('title', text: full_title(page_title)) }
 
     describe "with invalid information" do
