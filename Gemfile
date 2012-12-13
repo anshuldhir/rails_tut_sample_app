@@ -33,7 +33,7 @@ gem 'jquery-rails'
 # gem 'capistrano'
 
 # To use debugger
-# gem 'debugger'
+gem 'debugger'
 
 gem "thin"
 gem "decent_exposure"
@@ -46,6 +46,7 @@ end
 group :development do
   gem "rails-erd"
   gem "annotate", '2.5.0'
+# gem "ruby-debug"
 end
 
 group :development, :test do
