@@ -13,6 +13,14 @@ def valid_signin(user)
   click_button "Sign in"
 end
 
+def signin(user)
+  visit signin_path
+  valid_signin(user)
+
+  # Signin when not using Capybara as well.
+  cookies[:remember_token] = user.remember_token
+end
+
 RSpec::Matchers.define :have_error_message do |message|
   match do |page|
     page.should have_selector('div.alert.alert-error', text: message)
