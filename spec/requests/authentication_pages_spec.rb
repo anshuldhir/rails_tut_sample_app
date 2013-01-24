@@ -83,6 +83,16 @@ describe "Authentication" do
           end
         end
 
+        describe "visiting the following page" do
+          before { visit following_user_path(user) }
+          it { should have_selector('title', text: 'Sign in') }
+        end
+
+        describe "visiting the followers page" do
+          before { visit followers_user_path(user) }
+          it { should have_selector('title', text: 'Sign in') }
+        end
+
         describe "submitting to the update action" do
           before { put user_path(user) }
           specify { response.should redirect_to(signin_path) }
@@ -113,6 +123,22 @@ describe "Authentication" do
           end
         end
       end
+
+      describe "in the Relationships controller" do
+        describe "submitting to the create action" do
+          before { post relationships_path }
+          specify { response.should redirect_to(signin_path) }
+        end
+
+        # There is no relationship with index 1 in the relationships table.
+        # But, it doesn't matter. The controller should redirect before 
+        # any attempt is made to retrieve the relationship.
+        describe "submitting to the destroy action" do
+          before { delete relationship_path(1) }
+          specify { response.should redirect_to(signin_path) }
+        end
+      end
+
     end
 
     describe "as wrong user" do
@@ -131,6 +157,31 @@ describe "Authentication" do
         before { put user_path(wrong_user) }
 
         specify { response.should redirect_to(root_path) }
+      end
+
+      describe "manipulating other user's relationships" do
+        let(:other_user) { FactoryGirl.create(:user) }
+        
+        describe "make wrong_user follow other_user" do
+          let(:relationship) {wrong_user.relationships.build(followed_id: other_user.id)}
+
+          it "should not increment wrong_user's followed users count" do
+            expect do
+              post relationship_path(relationship)
+            end.to change(wrong_user.followed_users, :count).by(0)
+          end
+        end
+
+        describe "make wrong_user unfollow other_user" do
+          before { wrong_user.follow!(other_user) }
+          let!(:relationship) { wrong_user.relationships.find_by_followed_id(other_user.id) }
+
+          it "should not decrement wrong_user's followed users count" do
+            expect do
+              delete relationship_path(relationship.id)
+            end.to change(wrong_user.followed_users, :count).by(0)
+          end
+        end
       end
     end
 

@@ -1,0 +1,32 @@
+
+FORM FOR FOLLOW
+
+<div id="follow_form">
+  <form accept-charset="UTF-8" action="/relationships" class="new_relationship" id="new_relationship" method="post">
+    <div style="margin:0;padding:0;display:inline">
+      <input name="utf8" type="hidden" value="✓">
+      <input name="authenticity_token" type="hidden" 
+              value="FxGpEanoYG2Hu2L0kkaytWen4YEeJQzzgqYwuIOo9vI=">
+    </div>
+    <div>
+      <input id="relationship_followed_id" name="relationship[followed_id]" type="hidden" value="2">
+    </div>
+    <input class="btn btn-large btn-primary" name="commit" type="submit" value="Follow">
+  </form>
+</div>
+
+
+
+FORM FOR UNFOLLOW
+
+<div id="follow_form">
+  <form accept-charset="UTF-8" action="/relationships/3" class="edit_relationship" id="edit_relationship_3" method="post">
+    <div style="margin:0;padding:0;display:inline">
+      <input name="utf8" type="hidden" value="✓">
+      <input name="_method" type="hidden" value="delete">
+      <input name="authenticity_token" type="hidden"
+              value="FxGpEanoYG2Hu2L0kkaytWen4YEeJQzzgqYwuIOo9vI=">
+    </div>
+    <input class="btn btn-large" name="commit" type="submit" value="Unfollow">
+  </form>
+</div>
